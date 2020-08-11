@@ -26,3 +26,7 @@ Route::get('/community', function () {
 Route::get('/support', function () {
     return view('support');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
