@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'AppController@index');
+Route::get('/', 'AppController@index')->name('library');
 
-Route::get('/tracks', 'AppController@tracks');
+Route::get('/tracks', 'AppController@tracks')->name('tracks');
 
-Route::get('/community', 'AppController@community');
+Route::get('/community', 'AppController@community')->name('community');
 
 Route::get('/support', function () {
     return view('support');
-});
+})->name('support');
 
 Auth::routes();
 

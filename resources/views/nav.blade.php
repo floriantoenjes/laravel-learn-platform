@@ -6,26 +6,29 @@
         </a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                @guest
+                @else
+                <li class="nav-item @if (request()->routeIs('tracks')) active @endif">
                     <a class="nav-link" href="{{env('app_url')}}/tracks"><b>Tracks</b></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item @if (request()->routeIs('library')) active @endif">
                     <a class="nav-link" href="{{env('app_url')}}/"><b>Library</b></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if (request()->routeIs('community')) active @endif">
                     <a class="nav-link" href="{{env('app_url')}}/community"><b>Community</b></a>
                 </li>
-                <li class="nav-item">
+                @endguest
+                <li class="nav-item @if (request()->routeIs('support')) active @endif">
                     <a class="nav-link" href="{{env('app_url')}}/support"><b>Support</b></a>
                 </li>
             </ul>
             <ul class="navbar-nav float-right">
                 @guest
-                <li class="nav-item">
+                <li class="nav-item @if (request()->routeIs('login')) active @endif">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
                 @if (Route::has('register'))
-                    <li class="nav-item">
+                    <li class="nav-item @if (request()->routeIs('register')) active @endif">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @endif
