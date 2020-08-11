@@ -15,13 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'AppController@index');
 
-Route::get('/tracks', function () {
-    return view('tracks');
-});
+Route::get('/tracks', 'AppController@tracks');
 
-Route::get('/community', function () {
-    return view('community');
-});
+Route::get('/community', 'AppController@community');
 
 Route::get('/support', function () {
     return view('support');
