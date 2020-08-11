@@ -20,12 +20,33 @@
                 </li>
             </ul>
             <ul class="navbar-nav float-right">
+                @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><b>My Org</b></a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><b>Workspaces</b></a>
-                </li>
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b>My Org</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b>Workspaces</b></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endguest
             </ul>
 
         </div>
