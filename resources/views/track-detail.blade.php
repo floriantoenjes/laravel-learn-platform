@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        @foreach($track->courses() as $course)
+        @foreach($track->courses as $course)
             <div class="col-lg-4 mb-3">
                 <div class="card m-0 bg-white" style="max-height: 300px; height:300px;">
                     <div class="card-header" style="background-color:{{$course->language === 'JavaScript' ? '#3659a2' : ($course->language === 'Python' ? '#008297' : ($course->language === 'iOS' ? '#30826C' : ($course->language === 'C#' ? '#008297' : ($course->language === 'PHP' ? '#008297' : '#9F4B84'))))}}">

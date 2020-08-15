@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Track;
-use Illuminate\Http\Request;
 use App\Course;
 
 class AppController extends Controller
@@ -22,7 +21,7 @@ class AppController extends Controller
     }
 
     public function trackDetail($id) {
-        return view('track-detail', ['track' => Track::find($id)]);
+        return view('track-detail', ['track' => Track::with('courses')->find($id)]);
     }
 
     public function community() {
