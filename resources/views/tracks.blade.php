@@ -24,7 +24,7 @@
 
                     <div class="card-body" style="max-height:175px; height:175px">
                         <h6 class="m-0">Track</h6>
-                        <h5 class="m-0">{{$track->title}}</h5>
+                        <h5 class="m-0"><a href="{{route("trackDetail", ["id" => $track->id])}}" {{$track->title}}</h5>
                         <p style="overflow:hidden; text-overflow:ellipsis; height:75px; max-height:75px" >{{$track->summary}}</p>
                     </div>
                     <div class="card-footer bg-white">

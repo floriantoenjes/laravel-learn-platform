@@ -21,6 +21,10 @@ class AppController extends Controller
         return view('tracks', ['tracks' => Track::all()]);
     }
 
+    public function trackDetail($id) {
+        return view('track-detail', ['track' => Track::find($id)]);
+    }
+
     public function community() {
         return view('community');
     }

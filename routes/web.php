@@ -17,6 +17,8 @@ Route::get('/', 'AppController@index')->name('library');
 
 Route::get('/tracks', 'AppController@tracks')->name('tracks');
 
+Route::get('/tracks/{id}', 'AppController@trackDetail')->name('trackDetail');
+
 Route::get('/community', 'AppController@community')->name('community');
 
 Route::get('/support', function () {
