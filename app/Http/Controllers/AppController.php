@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Track;
 use Illuminate\Http\Request;
 use App\Course;
 
@@ -17,7 +18,7 @@ class AppController extends Controller
     }
 
     public function tracks() {
-        return view('tracks');
+        return view('tracks', ['tracks' => Track::all()]);
     }
 
     public function community() {

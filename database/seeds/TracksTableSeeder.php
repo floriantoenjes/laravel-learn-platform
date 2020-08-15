@@ -11,10 +11,10 @@ class TracksTableSeeder extends Seeder {
             'id' => 1,
             'title' => 'Beginning C#',
             'summary' => 'Learn the basics of C# development and create
-                .NET applications',
-            'duration' => 8,
+                .NET applications.',
+            'duration' => 300,
             'language' => 'C#',
-            'difficulty' => 'easy'
+            'difficulty' => 'Beginner'
         ]);
 
     }
