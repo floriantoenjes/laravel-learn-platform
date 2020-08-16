@@ -17,6 +17,16 @@ class TracksTableSeeder extends Seeder {
             'difficulty' => 'Beginner'
         ]);
 
+        DB::table('tracks')->insert([
+            'id' => 2,
+            'title' => 'Beginning Python',
+            'summary' => 'Learn the fundamentals of Python development and create
+                web applications using a framework.',
+            'duration' => 600,
+            'language' => 'Python',
+            'difficulty' => 'Beginner'
+        ]);
+
     }
 
 }
