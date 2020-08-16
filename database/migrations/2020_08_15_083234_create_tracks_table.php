@@ -17,7 +17,6 @@ class CreateTracksTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('summary');
-            $table->integer('duration');
             $table->string('language');
             $table->string('difficulty');
             $table->timestamps();

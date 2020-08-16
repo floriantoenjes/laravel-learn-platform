@@ -16,6 +16,7 @@
         </div>
 
         @foreach($tracks as $track)
+            {{$track->test}}
             <div class="col-lg-4 mb-3">
                 <div class="card m-0 bg-white" style="max-height: 300px; height:300px;">
                     <div class="card-header" style="background-color:{{$track->language === 'JavaScript' ? '#3659a2' : ($track->language === 'Python' ? '#008297' : ($track->language === 'iOS' ? '#30826C' : ($track->language === 'C#' ? '#008297' : ($track->language === 'PHP' ? '#008297' : '#9F4B84'))))}}">
@@ -24,7 +25,7 @@
 
                     <div class="card-body" style="max-height:175px; height:175px">
                         <h6 class="m-0">Track</h6>
-                        <h5 class="m-0"><a href="{{route("trackDetail", ["id" => $track->id])}}" {{$track->title}}</h5>
+                        <h5 class="m-0"><a href="{{route("trackDetail", ["id" => $track->id])}}">{{$track->title}}</a></h5>
                         <p style="overflow:hidden; text-overflow:ellipsis; height:75px; max-height:75px" >{{$track->summary}}</p>
                     </div>
                     <div class="card-footer bg-white">

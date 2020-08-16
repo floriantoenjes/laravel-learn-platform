@@ -12,7 +12,6 @@ class TracksTableSeeder extends Seeder {
             'title' => 'Beginning C#',
             'summary' => 'Learn the basics of C# development and create
                 .NET applications.',
-            'duration' => 300,
             'language' => 'C#',
             'difficulty' => 'Beginner'
         ]);
@@ -22,7 +21,6 @@ class TracksTableSeeder extends Seeder {
             'title' => 'Beginning Python',
             'summary' => 'Learn the fundamentals of Python development and create
                 web applications using a framework.',
-            'duration' => 600,
             'language' => 'Python',
             'difficulty' => 'Beginner'
         ]);

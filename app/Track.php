@@ -10,4 +10,13 @@ class Track extends Model
     {
         return $this->hasMany('App\Course');
     }
+
+    public function getDurationAttribute()
+    {
+        $durationInMinutes = 0;
+        foreach ($this->courses as $course) {
+            $durationInMinutes += $course->duration;
+        }
+        return $durationInMinutes;
+    }
 }

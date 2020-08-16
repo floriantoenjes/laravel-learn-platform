@@ -27,6 +27,7 @@ class CoursesTableSeeder extends Seeder
             'language' => 'Python',
             'difficulty' => 'Beginner',
             'stages' => '2',
+            'track_Id' => 2
         ]);
         DB::table('courses')->insert([
             'title' => 'Python Sequences',
@@ -35,6 +36,7 @@ class CoursesTableSeeder extends Seeder
             'language' => 'Python',
             'difficulty' => 'Intermediate',
             'stages' => '2',
+            'track_Id' => 2
         ]);
         DB::table('courses')->insert([
             'title' => 'Functions, Packing, and Unpacking',
@@ -43,6 +45,7 @@ class CoursesTableSeeder extends Seeder
             'language' => 'Python',
             'difficulty' => 'Beginner',
             'stages' => '3',
+            'track_Id' => 2
         ]);
         DB::table('courses')->insert([
             'title' => 'Introducing Tuples',
@@ -51,6 +54,7 @@ class CoursesTableSeeder extends Seeder
             'language' => 'Python',
             'difficulty' => 'Beginner',
             'stages' => '1',
+            'track_Id' => 2
         ]);
         DB::table('courses')->insert([
             'title' => 'React Authentication',
