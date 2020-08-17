@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Track;
 use App\Course;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
@@ -17,7 +19,10 @@ class AppController extends Controller
     }
 
     public function tracks() {
-        return view('tracks', ['tracks' => Track::all()]);
+        return view('tracks', [
+            'tracks' => Track::all(),
+            'activeTrack' => User::with('activeTrack')->find(Auth::user()->getAuthIdentifier())
+        ]);
     }
 
     public function trackDetail($id) {

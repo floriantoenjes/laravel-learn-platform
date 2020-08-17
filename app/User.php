@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function activeTrack()
+    {
+        return $this->belongsTo('App\Track');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
