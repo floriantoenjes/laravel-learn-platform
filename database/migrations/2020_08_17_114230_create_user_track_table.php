@@ -14,8 +14,13 @@ class CreateUserTrackTable extends Migration
     public function up()
     {
         Schema::create('user_track', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users');
+
+            $table->bigInteger('track_id')->unsigned();
+            $table->foreign('track_id')
+                ->references('id')->on('tracks');
         });
     }
 
