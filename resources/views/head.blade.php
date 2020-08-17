@@ -7,5 +7,8 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/starter-template.css')}}" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <!-- END head.blade.php -->
