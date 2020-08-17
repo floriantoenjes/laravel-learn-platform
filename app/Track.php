@@ -2,8 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Track
+ *
+ * @mixin Builder
+ */
 class Track extends Model
 {
     public function courses()

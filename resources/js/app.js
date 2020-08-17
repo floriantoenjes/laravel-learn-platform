@@ -30,3 +30,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+window.switchTrack = function (url, token) {
+    $.post(
+        url,
+        {
+            '_token': token
+        }
+        ,function(data) {
+            window.location.reload();
+    });
+}

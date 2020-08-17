@@ -19,14 +19,23 @@ class AppController extends Controller
     }
 
     public function tracks() {
+        $activeTrack = User::with('activeTrack')->find(Auth::user()->getAuthIdentifier())->activeTrack;
+
         return view('tracks', [
             'tracks' => Track::all(),
-            'activeTrack' => User::with('activeTrack')->find(Auth::user()->getAuthIdentifier())
+            'activeTrack' => $activeTrack
         ]);
     }
 
     public function trackDetail($id) {
         return view('track-detail', ['track' => Track::with('courses')->find($id)]);
+    }
+
+    public function switchTrack($id)
+    {
+        $currentUser = User::find(Auth::id());
+        $currentUser->active_track_id = $id;
+        $currentUser->save();
     }
 
     public function community() {

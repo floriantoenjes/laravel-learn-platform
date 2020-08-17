@@ -35,7 +35,8 @@
                         <button class="btn rounded bg-white border-dark" style="border-radius:2em !important; color:{{$track->language === 'JavaScript' ? '#3659a2' : ($track->language === 'Python' ? '#008297' : ($track->language === 'iOS' ? '#30826C' : '#9F4B84'))}}" ><b>{{$track->language}}</b></button>
                         <button class="btn rounded bg-white border-dark" style="border-radius:2em !important;"><b>{{$track->difficulty}}</b></button>
                         @if(!$activeTrack || $activeTrack->id != $track->id)
-                            <button class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right"><b>Switch Track</b></button>
+                            <button class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right"
+                            onclick="switchTrack('{{ Request::url() }}/{{ $track->id }}', '{{ csrf_token() }}')"><b>Switch Track</b></button>
                         @endif
                     </div>
                 </div>
