@@ -7,20 +7,32 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@mixin make-visible-transition {
+    visibility: inherit;
+    opacity: 100;
+    transition: visibility 1s, opacity 0.5s linear;
+}
+
+@mixin make-invisible-transition {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 0.5s linear;
+}
+
 .active-track {
     .mark-track-active {
-        display: inherit;
+        @include make-visible-transition;
     }
     .switch-btn {
-        display: none;
+        @include make-invisible-transition;
     }
 }
 
 .inactive-track {
     .mark-track-active {
-        display: none;
+        @include make-invisible-transition;
     }
     .switch-btn {
-        display: inherit;
+        @include make-visible-transition;
     }
 }

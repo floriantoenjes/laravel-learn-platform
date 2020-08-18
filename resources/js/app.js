@@ -31,16 +31,16 @@ const app = new Vue({
     el: '#app',
 });
 
-window.switchTrack = function (uri, trackId, token) {
+switchTrack = function (uri, trackId, token) {
     $.post(
         `${uri}/${trackId}`,
         {
             '_token': token
         },
         function(data) {
-            const activeTrack = $('.active-track');
-            activeTrack.removeClass('active-track');
-            activeTrack.addClass('inactive-track')
+            const oldActiveTrack = $('.active-track');
+            oldActiveTrack.removeClass('active-track');
+            oldActiveTrack.addClass('inactive-track')
 
             const newActiveTrack = $(`#track-${trackId}`);
             newActiveTrack.addClass('active-track');
