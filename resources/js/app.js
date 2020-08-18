@@ -37,7 +37,7 @@ switchTrack = function (uri, trackId, token) {
         {
             '_token': token
         },
-        function(data) {
+        function (data) {
             const oldActiveTrack = $('.active-track');
             oldActiveTrack.removeClass('active-track');
             oldActiveTrack.addClass('inactive-track')
