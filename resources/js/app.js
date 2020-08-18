@@ -45,5 +45,8 @@ switchTrack = function (uri, trackId, token) {
             const newActiveTrack = $(`#track-${trackId}`);
             newActiveTrack.addClass('active-track');
             newActiveTrack.removeClass('inactive-track');
+
+            $('.active-track .mark-track-active b').addClass('tilt-animation');
+            $('.inactive-track .mark-track-active b').removeClass('tilt-animation');
     });
 }

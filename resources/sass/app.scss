@@ -22,6 +22,11 @@
 .active-track {
     .mark-track-active {
         @include make-visible-transition;
+
+        b {
+            display: block;
+            width: 48px;
+        }
     }
     .switch-btn {
         @include make-invisible-transition;
@@ -35,4 +40,20 @@
     .switch-btn {
         @include make-visible-transition;
     }
+}
+
+/*
+    ANIMATIONS
+ */
+
+.tilt-animation {
+    animation: tilt 0.5s;
+    animation-delay: 0.75s;
+}
+
+@keyframes tilt {
+    0% { transform: rotate(0deg); }
+    33% { transform: rotate(15deg); }
+    66% { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
 }
