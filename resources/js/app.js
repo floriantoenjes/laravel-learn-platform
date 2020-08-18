@@ -31,13 +31,19 @@ const app = new Vue({
     el: '#app',
 });
 
-window.switchTrack = function (url, token) {
+window.switchTrack = function (uri, trackId, token) {
     $.post(
-        url,
+        `${uri}/${trackId}`,
         {
             '_token': token
-        }
-        ,function(data) {
-            window.location.reload();
+        },
+        function(data) {
+            const activeTrack = $('.active-track');
+            activeTrack.removeClass('active-track');
+            activeTrack.addClass('inactive-track')
+
+            const newActiveTrack = $(`#track-${trackId}`);
+            newActiveTrack.addClass('active-track');
+            newActiveTrack.removeClass('inactive-track');
     });
 }

@@ -16,14 +16,11 @@
         </div>
 
         @foreach($tracks as $track)
-            {{$track->test}}
-            <div class="col-lg-4 mb-3">
+            <div id="track-{{ $track->id }}" class="col-lg-4 mb-3 {{ $activeTrack && $activeTrack->id == $track->id ? 'active-track' : 'inactive-track' }}">
                 <div class="card m-0 bg-white" style="max-height: 300px; height:300px;">
                     <div class="card-header" style="background-color:{{$track->language === 'JavaScript' ? '#3659a2' : ($track->language === 'Python' ? '#008297' : ($track->language === 'iOS' ? '#30826C' : ($track->language === 'C#' ? '#008297' : ($track->language === 'PHP' ? '#008297' : '#9F4B84'))))}}">
                         <p class="float-right text-white" ><b>{{$track->duration >= 120 ? round($track->duration / 60) . ' hours' : $track->duration . ' min'}}</b></p>
-                        @if($activeTrack && $activeTrack->id == $track->id)
-                            <p class="text-white"><b>Active</b></p>
-                        @endif
+                        <p class="text-white mark-track-active"><b>Active</b></p>
                     </div>
 
                     <div class="card-body" style="max-height:175px; height:175px">
@@ -34,10 +31,10 @@
                     <div class="card-footer bg-white">
                         <button class="btn rounded bg-white border-dark" style="border-radius:2em !important; color:{{$track->language === 'JavaScript' ? '#3659a2' : ($track->language === 'Python' ? '#008297' : ($track->language === 'iOS' ? '#30826C' : '#9F4B84'))}}" ><b>{{$track->language}}</b></button>
                         <button class="btn rounded bg-white border-dark" style="border-radius:2em !important;"><b>{{$track->difficulty}}</b></button>
-                        @if(!$activeTrack || $activeTrack->id != $track->id)
-                            <button class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right"
-                            onclick="switchTrack('{{ Request::url() }}/{{ $track->id }}', '{{ csrf_token() }}')"><b>Switch Track</b></button>
-                        @endif
+{{--                        @if(!$activeTrack || $activeTrack->id != $track->id)--}}
+                            <button class="btn rounded bg-white border-dark switch-btn" style="border-radius:2em !important; float: right"
+                            onclick="switchTrack('{{ Request::url() }}', {{ $track->id }}, '{{ csrf_token() }}')"><b>Switch Track</b></button>
+{{--                        @endif--}}
                     </div>
                 </div>
             </div>

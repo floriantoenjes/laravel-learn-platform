@@ -6,3 +6,21 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.active-track {
+    .mark-track-active {
+        display: inherit;
+    }
+    .switch-btn {
+        display: none;
+    }
+}
+
+.inactive-track {
+    .mark-track-active {
+        display: none;
+    }
+    .switch-btn {
+        display: inherit;
+    }
+}
