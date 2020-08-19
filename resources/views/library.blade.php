@@ -16,7 +16,7 @@
             <div class="reset-btns row">
                 @if(app('request')->input('language') && app('request')->input('difficulty'))
                     <div class="col-12">
-                        <a class="btn btn-light mt-2" href="{{route("library", ["difficulty" => app('request')->input('difficulty')])}}">All Courses</a>
+                        <a class="btn btn-light mt-2" href="{{route("library")}}">All Courses</a>
                     </div>
                 @endif
                 @if(app('request')->input('language'))
