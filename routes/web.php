@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'AppController@index')->name('library');
 
 Route::get('/tracks', 'AppController@tracks')->name('tracks');
-
 Route::get('/tracks/{id}', 'AppController@trackDetail')->name('trackDetail');
-
 Route::post('/tracks/{id}', 'AppController@switchTrack')->name('switchTrack');
 
 Route::get('/community', 'AppController@community')->name('community');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Track;
 use App\Course;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
@@ -14,8 +15,20 @@ class AppController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-        return view('library', ['courses' => Course::all()]);
+    public function index(Request $request) {
+        $courses = Course::all();
+
+        $difficulty = $request->input('difficulty');
+        if ($difficulty) {
+            $courses = $courses->where('difficulty', $difficulty);
+        }
+
+        $language = $request->input('language');
+        if ($language) {
+            $courses = $courses->where('language', $language);
+        }
+
+        return view('library', ['courses' => $courses]);
     }
 
     public function tracks() {

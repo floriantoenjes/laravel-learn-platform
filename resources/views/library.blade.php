@@ -13,6 +13,11 @@
                     </div>
                 </div>
             </div>
+            <div>
+                @if(app('request')->input('difficulty') || app('request')->input('language'))
+                    <a class="btn btn-light btn-block mt-2" href="{{route("library")}}">Show all Courses</a>
+                @endif
+            </div>
         </div>
     @foreach($courses as $course)
         @include('course', ['course' => $course])
