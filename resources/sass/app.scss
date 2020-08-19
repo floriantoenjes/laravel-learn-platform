@@ -10,13 +10,13 @@
 @mixin make-visible-transition {
     visibility: inherit;
     opacity: 100;
-    transition: visibility 1s, opacity 0.5s linear;
+    transition: visibility 1s, opacity 0.25s linear;
 }
 
 @mixin make-invisible-transition {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s, opacity 0.5s linear;
+    transition: visibility 1s, opacity 0.25s linear;
 }
 
 .active-track {
