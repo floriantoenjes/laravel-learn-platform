@@ -13,9 +13,16 @@
                     </div>
                 </div>
             </div>
-            <div>
-                @if(app('request')->input('difficulty') || app('request')->input('language'))
-                    <a class="btn btn-light btn-block mt-2" href="{{route("library")}}">Show all Courses</a>
+            <div class="reset-btns row">
+                @if(app('request')->input('language'))
+                    <div class="col-6">
+                        <a class="btn btn-light mt-2" href="{{route("library", ["difficulty" => app('request')->input('difficulty')])}}">Reset Language</a>
+                    </div>
+                @endif
+                @if(app('request')->input('difficulty'))
+                    <div class="col-6">
+                        <a class="btn btn-light mt-2" href="{{route("library", ["language" => app('request')->input('language')])}}">Reset Difficulty</a>
+                    </div>
                 @endif
             </div>
         </div>

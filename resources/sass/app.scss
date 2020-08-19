@@ -7,6 +7,17 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.reset-btns {
+
+    div {
+        margin: 0 auto;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
 @mixin make-visible-transition {
     visibility: inherit;
     opacity: 100;
