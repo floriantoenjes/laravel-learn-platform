@@ -8,31 +8,16 @@
 @import '~bootstrap/scss/bootstrap';
 
 .reset-btns {
-
     div {
         margin: 0 auto;
     }
-
     .btn {
         width: 100%;
     }
 }
 
-@mixin make-visible-transition {
-    visibility: inherit;
-    opacity: 100;
-    transition: visibility 1s, opacity 0.25s linear;
-}
-
-@mixin make-invisible-transition {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 1s, opacity 0.25s linear;
-}
-
 .active-track {
     .mark-track-active {
-        @include make-visible-transition;
 
         b {
             display: block;
@@ -40,16 +25,22 @@
         }
     }
     .switch-btn {
-        @include make-invisible-transition;
+        display: none;
+    }
+    .resume-btn {
+        display: inherit;
     }
 }
 
 .inactive-track {
     .mark-track-active {
-        @include make-invisible-transition;
+        display: none;
     }
     .switch-btn {
-        @include make-visible-transition;
+        display: inherit;
+    }
+    .resume-btn {
+        display: none;
     }
 }
 
@@ -59,7 +50,7 @@
 
 .tilt-animation {
     animation: tilt 0.5s;
-    animation-delay: 0.75s;
+    animation-delay: 0.5s;
 }
 
 @keyframes tilt {

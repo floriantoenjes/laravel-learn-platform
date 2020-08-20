@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'AppController@index')->name('library');
+Route::get('/', 'AppController@index')->name('home');
+
+Route::get('/library', 'AppController@library')->name('library');
 
 Route::get('/tracks', 'AppController@tracks')->name('tracks');
 Route::get('/tracks/{id}', 'AppController@trackDetail')->name('trackDetail');
@@ -26,7 +28,5 @@ Route::get('/support', function () {
 })->name('support');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::view("test", "layouts/app");

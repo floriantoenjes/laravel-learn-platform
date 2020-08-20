@@ -15,7 +15,17 @@ class AppController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request) {
+    public function index() {
+        $activeTrack = User::with('activeTrack')->find(Auth::user()->getAuthIdentifier())->activeTrack;
+
+
+        return view('home', [
+            'track' => $activeTrack,
+            'activeTrack' => $activeTrack
+        ]);
+    }
+
+    public function library(Request $request) {
         $courses = Course::all();
 
         $difficulty = $request->input('difficulty');

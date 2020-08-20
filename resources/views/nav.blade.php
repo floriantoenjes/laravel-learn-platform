@@ -1,6 +1,6 @@
 <!-- START nav.blade.php -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="height: 70px !important">
-        <a class="navbar-brand" href="#" style="border-right:2px; border-color: white">
+        <a class="navbar-brand" href="/" style="border-right:2px; border-color: white">
             <img src="{{asset('images/logo-icon.png')}}" width="30" height="30" class="d-inline-block" alt="">
             <b>Home</b>
         </a>
@@ -12,7 +12,7 @@
                     <a class="nav-link" href="{{env('app_url')}}/tracks"><b>Tracks</b></a>
                 </li>
                 <li class="nav-item @if (request()->routeIs('library')) active @endif">
-                    <a class="nav-link" href="{{env('app_url')}}/"><b>Library</b></a>
+                    <a class="nav-link" href="{{env('app_url')}}/library"><b>Library</b></a>
                 </li>
                 <li class="nav-item @if (request()->routeIs('community')) active @endif">
                     <a class="nav-link" href="{{env('app_url')}}/community"><b>Community</b></a>
