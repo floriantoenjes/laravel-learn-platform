@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class Track extends Model
 {
+    private static $coursesCompletedByUser = [];
+
     public function courses()
     {
         return $this->hasMany('App\Course');
@@ -32,11 +34,13 @@ class Track extends Model
         $trackCourses = $this->courses;
         $trackDuration = $trackCourses->sum('duration');
 
-        $coursesCompletedByUser = Auth::user()->completedCourses;
+        if (empty(Track::$coursesCompletedByUser)) {
+            Track::$coursesCompletedByUser = Auth::user()->completedCourses;
+        }
 
         $completedDuration = 0;
         foreach ($trackCourses as $trackCourse) {
-            foreach ($coursesCompletedByUser as $courseCompletedByUser) {
+            foreach (Track::$coursesCompletedByUser as $courseCompletedByUser) {
                 if ($trackCourse->id === $courseCompletedByUser->id) {
                     $completedDuration += $trackCourse->duration;
                     break;
