@@ -70,7 +70,10 @@ class AppController extends Controller
     }
 
     public function community() {
-        return view('community');
+        $rankedUsers = User::all();
+        return view('community', [
+            'rankedUsers' => $rankedUsers
+        ]);
     }
 
     /**
