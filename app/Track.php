@@ -27,26 +27,22 @@ class Track extends Model
         return $durationInMinutes;
     }
 
-    public function getFinishedPercentageAttribute()
+    public function getDurationLeftAttribute()
     {
         $trackCourses = $this->courses;
-        $totalCourseCount = count($trackCourses->toArray());
+        $trackDuration = $trackCourses->sum('duration');
 
         $coursesCompletedByUser = Auth::user()->completedCourses;
 
-        $courseToId = function ($course) {
-            return $course['id'];
-        };
-
-        $trackCoursesIds = array_map($courseToId, $trackCourses->toArray());
-        $coursesCompletedByUserIds = array_map($courseToId, $coursesCompletedByUser->toArray());
-
-        $completedTrackCourses = 0;
-        foreach ($trackCoursesIds as $trackCourseId) {
-            if (in_array($trackCourseId, $coursesCompletedByUserIds)) {
-                $completedTrackCourses++;
+        $completedDuration = 0;
+        foreach ($trackCourses as $trackCourse) {
+            foreach ($coursesCompletedByUser as $courseCompletedByUser) {
+                if ($trackCourse->id === $courseCompletedByUser->id) {
+                    $completedDuration += $trackCourse->duration;
+                    break;
+                }
             }
         }
-        return  $completedTrackCourses / $totalCourseCount * 100;
+        return $trackDuration - $completedDuration;
     }
 }
