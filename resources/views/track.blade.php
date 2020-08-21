@@ -1,6 +1,7 @@
 <div id="track-{{ $track->id }}" class="col-lg-4 mb-3 {{ $activeTrack && $activeTrack->id == $track->id ? 'active-track' : 'inactive-track' }}">
     <div class="card m-0 bg-white" style="max-height: 300px; height:300px;">
         <div class="card-header" style="background-color:{{$track->language === 'JavaScript' ? '#3659a2' : ($track->language === 'Python' ? '#008297' : ($track->language === 'iOS' ? '#30826C' : ($track->language === 'C#' ? '#008297' : ($track->language === 'PHP' ? '#008297' : '#9F4B84'))))}}">
+            <p class="float-right text-white" ><b>({{ $track->finishedPercentage }}% completed)</b></p>
             <p class="float-right text-white" ><b>{{$track->duration >= 120 ? round($track->duration / 60) . ' hours' : $track->duration . ' min'}}</b></p>
             <p class="text-white mark-track-active"><b>Active</b></p>
         </div>
