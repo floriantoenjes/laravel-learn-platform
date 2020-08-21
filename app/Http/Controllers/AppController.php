@@ -18,7 +18,6 @@ class AppController extends Controller
     public function index() {
         $activeTrack = User::with('activeTrack')->find(Auth::user()->getAuthIdentifier())->activeTrack;
 
-
         return view('home', [
             'track' => $activeTrack,
             'activeTrack' => $activeTrack
@@ -77,7 +76,7 @@ class AppController extends Controller
     /**
      * @return array
      */
-    public function getCompletedCoursesByAuthUser(): array
+    private function getCompletedCoursesByAuthUser(): array
     {
         $completedCourses = Auth::user()->completedCourses;
         $completedCourseIds = [];

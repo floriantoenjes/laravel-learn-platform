@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class Track extends Model
 {
-    private static $coursesCompletedByUser = [];
+    private static $coursesCompletedByUser = null;
 
     public function courses()
     {
@@ -34,7 +34,7 @@ class Track extends Model
         $trackCourses = $this->courses;
         $trackDuration = $trackCourses->sum('duration');
 
-        if (empty(Track::$coursesCompletedByUser)) {
+        if (Track::$coursesCompletedByUser === null) {
             Track::$coursesCompletedByUser = Auth::user()->completedCourses;
         }
 
