@@ -12,5 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Course extends Model
 {
-    //
+    public function usersWhoCompletedCourse()
+    {
+        return $this->belongsToMany('App\User', 'user_courses');
+    }
 }

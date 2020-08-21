@@ -5,6 +5,9 @@
             <p class="float-right text-white">
                 <b>{{$course->duration >= 120 ? round($course->duration / 60) . ' hours' : $course->duration . ' min'}}</b>
             </p>
+            @if(in_array($course->id, $completedCourseIds))
+                <p class="text-white">Completed</p>
+            @endif
         </div>
 
         <div class="card-body" style="max-height:175px; height:175px">

@@ -21,6 +21,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Track');
     }
 
+    public function completedCourses()
+    {
+        return $this->belongsToMany('App\Course', 'user_courses');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

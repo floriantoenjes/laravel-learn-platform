@@ -15,5 +15,7 @@
         </div>
     </div>
 
-    @include('track')
+    @if($activeTrack)
+        @include('track')
+    @endif
 @endsection
