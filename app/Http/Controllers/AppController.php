@@ -26,7 +26,6 @@ class AppController extends Controller
 
     public function library(Request $request) {
         $courses = Course::all();
-        $completedCourseIds = $this->getCompletedCoursesByAuthUser();
 
         $difficulty = $request->input('difficulty');
         if ($difficulty) {
@@ -40,7 +39,6 @@ class AppController extends Controller
 
         return view('library', [
             'courses' => $courses,
-            'completedCourseIds' => $completedCourseIds
         ]);
     }
 
@@ -54,11 +52,8 @@ class AppController extends Controller
     }
 
     public function trackDetail($id) {
-        $completedCourseIds = $this->getCompletedCoursesByAuthUser();
-
         return view('track-detail', [
             'track' => Track::with('courses')->find($id),
-            'completedCourseIds' => $completedCourseIds
         ]);
     }
 
@@ -74,18 +69,5 @@ class AppController extends Controller
         return view('community', [
             'rankedUsers' => $rankedUsers
         ]);
-    }
-
-    /**
-     * @return array
-     */
-    private function getCompletedCoursesByAuthUser(): array
-    {
-        $completedCourses = Auth::user()->completedCourses;
-        $completedCourseIds = [];
-        foreach ($completedCourses as $completedCourse) {
-            $completedCourseIds[] = $completedCourse->id;
-        }
-        return $completedCourseIds;
     }
 }
