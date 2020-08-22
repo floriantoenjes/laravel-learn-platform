@@ -23,7 +23,7 @@ class User extends Authenticatable
 
     public function completedCourses()
     {
-        return $this->belongsToMany('App\Course', 'user_courses');
+        return $this->belongsToMany('App\Course', 'user_courses')->withPivot('completed');
     }
 
     /**

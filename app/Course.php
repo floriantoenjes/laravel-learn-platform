@@ -17,7 +17,7 @@ class Course extends Model
 
     public function usersWhoCompletedCourse()
     {
-        return $this->belongsToMany('App\User', 'user_courses');
+        return $this->belongsToMany('App\User', 'user_courses')->withPivot('completed');
     }
 
     public function getCompletedByUserAttribute()

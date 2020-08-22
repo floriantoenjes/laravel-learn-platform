@@ -17,6 +17,8 @@ Route::get('/', 'AppController@index')->name('home');
 
 Route::get('/library', 'AppController@library')->name('library');
 
+Route::post('/courses/complete/{id}', 'AppController@completeCourse')->name('completeCourse');
+
 Route::get('/tracks', 'AppController@tracks')->name('tracks');
 Route::get('/tracks/{id}', 'AppController@trackDetail')->name('trackDetail');
 Route::post('/tracks/{id}', 'AppController@switchTrack')->name('switchTrack');

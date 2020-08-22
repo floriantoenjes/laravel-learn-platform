@@ -57,6 +57,14 @@ class AppController extends Controller
         ]);
     }
 
+    public function completeCourse($id)
+    {
+        $course = Course::with('usersWhoCompletedCourse')->find($id);
+        $pivot = $course->usersWhoCompletedCourse()->find(Auth::user()->id)->pivot;
+        $pivot->completed = true;
+        $pivot->save();
+    }
+
     public function switchTrack($id)
     {
         $currentUser = User::find(Auth::id());

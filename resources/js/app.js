@@ -50,3 +50,14 @@ switchTrack = function (uri, trackId, token) {
             $('.inactive-track .mark-track-active b').removeClass('tilt-animation');
     });
 }
+
+completeCourse = function (courseId, token) {
+    $.post(
+        `/courses/complete/${courseId}`,
+        {
+            '_token': token
+        },
+        function (data) {
+            alert('test');
+        });
+};
