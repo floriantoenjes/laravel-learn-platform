@@ -49,4 +49,24 @@ class Track extends Model
         }
         return $trackDuration - $completedDuration;
     }
+
+    public function getOpenCoursesAttribute() {
+        $openCourses = [];
+        foreach ($this->courses as $course) {
+            if (!$course->completedByUser) {
+                $openCourses[] = $course;
+            }
+        }
+        return $openCourses;
+    }
+
+    public function getCompletedCoursesAttribute() {
+        $completedCourses = [];
+        foreach ($this->courses as $course) {
+            if ($course->completedByUser) {
+                $completedCourses[] = $course;
+            }
+        }
+        return $completedCourses;
+    }
 }

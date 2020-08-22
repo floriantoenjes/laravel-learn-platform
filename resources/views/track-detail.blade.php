@@ -14,7 +14,16 @@
                 </div>
             </div>
         </div>
-        @foreach($track->courses as $course)
+    </div>
+    <h4 class="mb-4">Open Courses</h4>
+    <div class="row">
+        @foreach($track->openCourses as $course)
+            @include('course', ['course' => $course])
+        @endforeach
+    </div>
+    <h4 class="mb-4">Already Completed</h4>
+    <div class="row">
+        @foreach($track->completedCourses as $course)
             @include('course', ['course' => $course])
         @endforeach
     </div>
