@@ -27,11 +27,13 @@
             </thead>
             <tbody>
             @foreach($rankedUsers as $index => $user)
-                <tr>
-                    <th scope="row">{{ $index +1 }}</th>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->completedCourses->count() }}</td>
-                </tr>
+                @if($user->completedCourses)
+                    <tr>
+                        <th scope="row">{{ $index +1 }}</th>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->completedCourses->count() }}</td>
+                    </tr>
+                @endif
             @endforeach
             </tbody>
         </table>

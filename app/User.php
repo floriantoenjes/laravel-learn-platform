@@ -26,6 +26,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Course', 'user_courses')->withPivot('completed');
     }
 
+    public function getCompletedCoursesAttribute()
+    {
+        return $this->startedCourses()->where('completed', true);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
