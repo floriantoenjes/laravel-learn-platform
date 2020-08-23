@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class Course extends Model
 {
     private static $startedByUserIds = null;
+    private static $completedByUserCache = [];
 
     public function usersWhoStartedCourse()
     {
@@ -34,12 +35,16 @@ class Course extends Model
 
     public function getCompletedByUserAttribute()
     {
-        $courseWithUser = $this->usersWhoStartedCourse()->find(Auth::user()->id);
-        if ($courseWithUser !== null)
-        {
-            $pivot = $courseWithUser->pivot;
-            return $pivot->completed;
+        if (!array_key_exists($this->id, Course::$completedByUserCache)) {
+            $courseWithUser = $this->usersWhoStartedCourse()->find(Auth::user()->id);
+            if ($courseWithUser !== null) {
+                $pivot = $courseWithUser->pivot;
+                Course::$completedByUserCache[$this->id] = $pivot->completed;
+            } else {
+                Course::$completedByUserCache[$this->id] = false;
+            }
+            return Course::$completedByUserCache[$this->id];
         }
-        return false;
+        return Course::$completedByUserCache[$this->id];
     }
 }
