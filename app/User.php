@@ -21,7 +21,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Track');
     }
 
-    public function completedCourses()
+    public function startedCourses()
     {
         return $this->belongsToMany('App\Course', 'user_courses')->withPivot('completed');
     }

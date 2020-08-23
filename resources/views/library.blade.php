@@ -32,7 +32,7 @@
             </div>
         </div>
     @foreach($courses as $course)
-        @include('course', ['course' => $course])
+        @include('course')
     @endforeach
     </div>
 @endsection

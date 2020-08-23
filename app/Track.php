@@ -35,7 +35,7 @@ class Track extends Model
         $trackDuration = $trackCourses->sum('duration');
 
         if (Track::$coursesCompletedByUser === null) {
-            Track::$coursesCompletedByUser = Auth::user()->completedCourses;
+            Track::$coursesCompletedByUser = Auth::user()->startedCourses;
         }
 
         $completedDuration = 0;

@@ -23,7 +23,7 @@ class Course extends Model
     public function getStartedByUserAttribute()
     {
         if (Course::$startedByUserIds === null) {
-            $startedCourses = Auth::user()->completedCourses;
+            $startedCourses = Auth::user()->startedCourses;
             Course::$startedByUserIds = array_map(function ($course) {
                 return $course['id'];
             }, $startedCourses->toArray());
@@ -35,7 +35,7 @@ class Course extends Model
     public function getCompletedByUserAttribute()
     {
         $courseWithUser = $this->usersWhoStartedCourse()->find(Auth::user()->id);
-        if ($courseWithUser)
+        if ($courseWithUser !== null)
         {
             $pivot = $courseWithUser->pivot;
             return $pivot->completed;
