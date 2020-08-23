@@ -58,6 +58,6 @@ completeCourse = function (courseId, token) {
             '_token': token
         },
         function (data) {
-            alert('test');
+            window.location.reload();
         });
 };

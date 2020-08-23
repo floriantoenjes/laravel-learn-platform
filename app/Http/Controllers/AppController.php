@@ -57,10 +57,12 @@ class AppController extends Controller
         ]);
     }
 
+    // @TODO: Implement logic for starting courses
+
     public function completeCourse($id)
     {
-        $course = Course::with('usersWhoCompletedCourse')->find($id);
-        $pivot = $course->usersWhoCompletedCourse()->find(Auth::user()->id)->pivot;
+        $course = Course::with('usersWhoStartedCourse')->find($id);
+        $pivot = $course->usersWhoStartedCourse()->find(Auth::user()->id)->pivot;
         $pivot->completed = true;
         $pivot->save();
     }

@@ -5,7 +5,9 @@
             <p class="float-right text-white">
                 <b>{{$course->duration >= 120 ? round($course->duration / 60) . ' hours' : $course->duration . ' min'}}</b>
             </p>
-            @if($course->completedByUser)
+            @if($course->startedByUser && !$course->completedByUser)
+                <p class="text-white">Started</p>
+            @elseif($course->completedByUser)
                 <p class="text-white">Completed</p>
             @endif
         </div>
@@ -18,8 +20,13 @@
         <div class="card-footer bg-white">
             <a class="btn rounded bg-white border-dark" style="border-radius:2em !important; color:{{$course->language === 'JavaScript' ? '#3659a2' : ($course->language === 'Python' ? '#008297' : ($course->language === 'iOS' ? '#30826C' : '#9F4B84'))}}" href="{{route("library", ["language" => $course->language, "difficulty" => app('request')->input('difficulty')])}}"><b>{{$course->language}}</b></a>
             <a class="btn rounded bg-white border-dark" style="border-radius:2em !important;" href="{{route("library", ["difficulty" => $course->difficulty, "language" => app('request')->input('language')])}}"><b>{{$course->difficulty}}</b></a>
-            <a class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right;"
-                onclick="completeCourse({{ $course->id }}, '{{ csrf_token() }}')"><b>Complete</b></a>
+            @if(!$course->startedByUser)
+                <a class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right;"
+                   onclick="completeCourse({{ $course->id }}, '{{ csrf_token() }}')"><b>Start</b></a>
+            @elseif($course->startedByUser && !$course->completedByUser)
+                <a class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right;"
+                    onclick="completeCourse({{ $course->id }}, '{{ csrf_token() }}')"><b>Complete</b></a>
+            @endif
         </div>
     </div>
 </div>
