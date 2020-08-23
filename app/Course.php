@@ -43,7 +43,6 @@ class Course extends Model
             } else {
                 Course::$completedByUserCache[$this->id] = false;
             }
-            return Course::$completedByUserCache[$this->id];
         }
         return Course::$completedByUserCache[$this->id];
     }
