@@ -15,14 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'AppController@index')->name('home');
 
-Route::get('/library', 'AppController@library')->name('library');
+Route::get('/library', 'CourseController@library')->name('library');
+Route::post('/courses/start/{id}', 'CourseController@startCourse')->name('startCourse');
+Route::post('/courses/complete/{id}', 'CourseController@completeCourse')->name('completeCourse');
 
-Route::post('/courses/start/{id}', 'AppController@startCourse')->name('startCourse');
-Route::post('/courses/complete/{id}', 'AppController@completeCourse')->name('completeCourse');
-
-Route::get('/tracks', 'AppController@tracks')->name('tracks');
-Route::get('/tracks/{id}', 'AppController@trackDetail')->name('trackDetail');
-Route::post('/tracks/{id}', 'AppController@switchTrack')->name('switchTrack');
+Route::get('/tracks', 'TrackController@tracks')->name('tracks');
+Route::get('/tracks/{id}', 'TrackController@trackDetail')->name('trackDetail');
+Route::post('/tracks/{id}', 'TrackController@switchTrack')->name('switchTrack');
 
 Route::get('/community', 'AppController@community')->name('community');
 

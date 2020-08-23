@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Track;
-use App\Course;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
@@ -22,60 +19,6 @@ class AppController extends Controller
             'track' => $activeTrack,
             'activeTrack' => $activeTrack
         ]);
-    }
-
-    public function library(Request $request) {
-        $courses = Course::all();
-
-        $difficulty = $request->input('difficulty');
-        if ($difficulty) {
-            $courses = $courses->where('difficulty', $difficulty);
-        }
-
-        $language = $request->input('language');
-        if ($language) {
-            $courses = $courses->where('language', $language);
-        }
-
-        return view('library', [
-            'courses' => $courses,
-        ]);
-    }
-
-    public function tracks() {
-        $activeTrack = User::with('activeTrack')->find(Auth::user()->getAuthIdentifier())->activeTrack;
-
-        return view('tracks', [
-            'tracks' => Track::all(),
-            'activeTrack' => $activeTrack
-        ]);
-    }
-
-    public function trackDetail($id) {
-        return view('track-detail', [
-            'track' => Track::with('courses')->find($id),
-        ]);
-    }
-
-    public function startCourse($id)
-    {
-        $course = Course::with('usersWhoStartedCourse')->find($id);
-        $course->usersWhoStartedCourse()->attach(Auth::user()->id);
-    }
-
-    public function completeCourse($id)
-    {
-        $course = Course::with('usersWhoStartedCourse')->find($id);
-        $pivot = $course->usersWhoStartedCourse()->find(Auth::user()->id)->pivot;
-        $pivot->completed = true;
-        $pivot->save();
-    }
-
-    public function switchTrack($id)
-    {
-        $currentUser = User::find(Auth::id());
-        $currentUser->active_track_id = $id;
-        $currentUser->save();
     }
 
     public function community() {
