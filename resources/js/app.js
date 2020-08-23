@@ -51,6 +51,17 @@ switchTrack = function (uri, trackId, token) {
     });
 }
 
+startCourse = function (courseId, token) {
+    $.post(
+        `/courses/start/${courseId}`,
+        {
+            '_token': token
+        },
+        function (data) {
+            window.location.reload();
+        });
+};
+
 completeCourse = function (courseId, token) {
     $.post(
         `/courses/complete/${courseId}`,

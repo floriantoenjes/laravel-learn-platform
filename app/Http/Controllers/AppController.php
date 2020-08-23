@@ -57,7 +57,11 @@ class AppController extends Controller
         ]);
     }
 
-    // @TODO: Implement logic for starting courses
+    public function startCourse($id)
+    {
+        $course = Course::with('usersWhoStartedCourse')->find($id);
+        $course->usersWhoStartedCourse()->attach(Auth::user()->id);
+    }
 
     public function completeCourse($id)
     {

@@ -22,7 +22,7 @@
             <a class="btn rounded bg-white border-dark" style="border-radius:2em !important;" href="{{route("library", ["difficulty" => $course->difficulty, "language" => app('request')->input('language')])}}"><b>{{$course->difficulty}}</b></a>
             @if(!$course->startedByUser)
                 <a class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right;"
-                   onclick="completeCourse({{ $course->id }}, '{{ csrf_token() }}')"><b>Start</b></a>
+                   onclick="startCourse({{ $course->id }}, '{{ csrf_token() }}')"><b>Start</b></a>
             @elseif($course->startedByUser && !$course->completedByUser)
                 <a class="btn rounded bg-white border-dark" style="border-radius:2em !important; float: right;"
                     onclick="completeCourse({{ $course->id }}, '{{ csrf_token() }}')"><b>Complete</b></a>

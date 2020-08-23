@@ -22,7 +22,7 @@ class CreateUserCoursesTable extends Migration
             $table->foreign('course_id')
                 ->references('id')->on('courses');
 
-            $table->boolean('completed');
+            $table->boolean('completed')->nullable();
         });
     }
 
