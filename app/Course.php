@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class Course extends Model
 {
-    private static $startedByUserIds = null;
+    private static $startedByUserIdsCache = null;
     private static $completedByUserCache = [];
 
     public function usersWhoStartedCourse()
@@ -23,13 +23,13 @@ class Course extends Model
 
     public function getStartedByUserAttribute()
     {
-        if (Course::$startedByUserIds === null) {
+        if (Course::$startedByUserIdsCache === null) {
             $startedCourses = Auth::user()->startedCourses;
-            Course::$startedByUserIds = array_map(function ($course) {
+            Course::$startedByUserIdsCache = array_map(function ($course) {
                 return $course['id'];
             }, $startedCourses->toArray());
         }
-        return in_array($this->id, Course::$startedByUserIds);
+        return in_array($this->id, Course::$startedByUserIdsCache);
     }
 
 
